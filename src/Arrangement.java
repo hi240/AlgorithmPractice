@@ -1,10 +1,9 @@
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
-import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
-
 /*
- * 세 개의 자연수 A, B, C가 주어질 때 A×B×C를 계산한 결과에 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오.
+ 백준 2577
+세 개의 자연수 A, B, C가 주어질 때 A×B×C를 계산한 결과에 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오.
 
 예를 들어 A = 150, B = 266, C = 427 이라면 
 
@@ -27,14 +26,12 @@ public class Arrangement {
 		int c = sc.nextInt();
 		int sum = a*b*c;
 		int[] arr = new int[10];
-		//만약에 sum=214021479다.
-		System.out.println(sum);
 		while(sum>0){
-		arr[sum%10]++; //9를 ++한다.
+		arr[sum%10]++;
 		sum=sum/10;
 		}
 		for(int i=0;i<10;i++) {
-			System.out.println(i+"= "+arr[i]);
+			System.out.println(arr[i]);
 		}
 		
 	}
