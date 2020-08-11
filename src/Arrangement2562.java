@@ -16,6 +16,7 @@ import java.util.Scanner;
 출력
 첫째 줄에 최댓값을 출력하고, 둘째 줄에 최댓값이 몇 번째 수인지를 출력한다..
  */
+
 public class Arrangement2562 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
