@@ -24,7 +24,7 @@ public class Arrangement8958 {
 				if(array[i].charAt(j)=='O') {
 					sum += ++count;
 				}else {
-					count=0;
+					count=0;  
 				}
 			}
 			System.out.println(sum);
