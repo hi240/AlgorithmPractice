@@ -37,7 +37,7 @@ public class Baekjoon11022 {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
-			System.out.println("Case #"+i+": "+a+" + "+b+"="+(a+b)+"\n");
+			System.out.println("Case #"+i+": "+a+" + "+b+" = "+(a+b));
 		}
 		bw.flush();
 		bw.close();
