@@ -1,7 +1,5 @@
-import java.io.IOException;
 import java.util.Arrays;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 /*
  * 
@@ -13,7 +11,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.
 참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.
 참가자 중에는 동명이인이 있을 수 있습니다.
  */
-/*public class Programmers1 {
+/*
+public class Programmers1 {
 
 public static void main(String[] args) throws IOException{
 		solution("dd","dd");
@@ -22,29 +21,24 @@ public static void main(String[] args) throws IOException{
 }
 [leo, kiki, eden]	[eden, kiki]	= [leo]
 
-	["marina", "josipa", "nikola", "vinko", "filipa"], ["josipa", "filipa", "marina", "nikola"]
-	ㄴvinko 가 나와야되는데 nikola가나옴.
-	["mislav", "stanko", "mislav", "ana"], ["stanko", "ana", "mislav"] 기댓값 〉	"mislav"
+
+    participant-["ana","mislav", "mislav", "stanko"]
+	completion1-["ana","mislav", "mislav"]
+	completion2-["ana","mislav", "stanko"]
 */
 
 class Programmers1 {
     public String solution(String[] participant, String[] completion) {
-    	 String answer = "";
-    	for(int i=0;i<participant.length;i++) {
-    		int count=0;
-    		for(int j=0;j<completion.length;j++) {
-    			if(participant[i].compareTo(completion[j])==0) {  //part[1]과 comp[1]은 같다. part[2]와 comp[0]은 같다.
-    				participant[i]="a";  //이미 같은건 a로바꿔벌임.
-    				completion[j]="a";
-    			}else if(participant[i].compareTo(completion[j])!=0&&!participant[i].equals("a")) { //part[1]과 comp[0]은 다르다.part[2]와 comp[1]은 다르다.
-    				count +=1;//범인일가능성을 통과하는..
-    				if(completion.length==count) {
-    					answer=participant[i];
-    				}
-    			}
+        
+    	Arrays.sort(participant);
+    	Arrays.sort(completion);
+    	int i=0;
+    	for(i=0;i<completion.length;i++) {
+    		if(!participant[i].equals(completion[i])){
+    			return participant[i];
     		}
     	}
-        return answer;
+        return participant[i];
+        
     }
-    
 }
