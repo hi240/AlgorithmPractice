@@ -1,3 +1,4 @@
+package Programmers1;
 class Programmers9 {
     public String solution(String[] seoul) {
         int num=0;
