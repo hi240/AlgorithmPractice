@@ -7,33 +7,28 @@ import java.util.Queue;
 public class Programmers05 {
 	public static void main(String[] args) throws IOException{
 		
-	int bridge_length=100;
-	int weight =100;
-	int[] truck_weights = {10};
-	int bridge_weights=0;
+	int bridge_length=5;
+	int weight =10;
+	int[] truck_weights = {2,2,2,6}; //
+	
 	int time =0;
+	
 	Queue<Integer> queue = new LinkedList<Integer>();
-	for(int i=0;i<truck_weights.length;i++) {
-		queue.add(truck_weights[i]);
-	}
-
-	while(!queue.isEmpty()) {
-		while(bridge_length>0) {
-			queue.poll();
-			time++;
-			bridge_length--;
-			System.out.println("머고");
-			while(weight>bridge_weights) {
-				if(!queue.isEmpty()) {
-				bridge_weights += queue.poll();
+	
+	int bridge=0;
+	for(int i=0;i<truck_weights.length;i++) { //{2}
+		int bl=bridge_length;
+		while(bl>0) {
+			if(weight>truck_weights[i]) { //무게보다 트럭 무게가 가볍다.
+				bridge += truck_weights[i]; //다리 위에 이 트럭이 있다. //bridge=2;
 				time++;
-				}
-				break;
+				bl--;
+			}else { //무게보다 트럭무게가 무겁다.
+				
 			}
-			time++;
 		}
-		System.out.println("시간"+time);
 	}
+	
 	}
 }
 /* 다리를 지나는 트럭
