@@ -15,22 +15,21 @@ public class Programmers17 {
 		    String answer = "";
 	        String[] word = s.split("");
 	        
-			for(String a: word) {
-	            char b=a.charAt(0);
+			for(int i=0;i<word.length;i++) {
+	            char b=word[i].charAt(0); 
 				if(b>=65 && b<=90){
-	                b +=n;
+	                b +=n; 
 	                if(b>90){
-	                    b %= 65;
+	                	 b = (char)(64+(b%90));
 	                }
 	            }
 	            if(b>=97 && b<=122){
-	                 b +=n;
+	                 b +=n; 
 	                if(b>122){
-	                    b %= 65;
-	                    System.out.println(b);
+	                    b = (char)(96+(b%122));
 	                }
 	            }
-	            a=String.valueOf(b);
+	            word[i]=String.valueOf(b);
 			}
 	        for(String a:word){
 	            answer += a;
