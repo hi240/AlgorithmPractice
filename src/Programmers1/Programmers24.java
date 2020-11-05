@@ -12,7 +12,7 @@ public class Programmers24 {
     	        int[] answer = {};
     	        double[] fail = {2.3};
     	        Arrays.sort(fail,new Comparator<double>() {
-    	        	@Override
+    	        	@Override 
     	        	public int compare(double a,double b) {
     	        		return a;
     	        	}
