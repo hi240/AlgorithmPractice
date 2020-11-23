@@ -4,59 +4,28 @@ import java.util.*;
 import java.io.IOException;
 
 public class Baekjoon2941{
+
     public static void main(String[] args) throws IOException{
         Scanner sc = new Scanner(System.in);
         String word = sc.nextLine();
+        sc.close();
         int num=0;
-        if(word.contains('c=')){
-            while(word.contains('c=')){
-              num++;
-              word.replaceFirst('c=','');  
-            }
-        }
-        if(word.contains('c-')){
-            while(word.contains('c-')){
-              num++;
-              word.replaceFirst('c-','');  
-            }
-        }
-        if(word.contains('dz=')){
-            while(word.contains('dz=')){
-              num++;
-              word.replaceFirst('dz=','');  
-            }
-        }
-        if(word.contains('d-')){
-            while(word.contains('d-')){
-              num++;
-              word.replaceFirst('d-','');  
-            }
-        }
-        if(word.contains('lj')){
-            while(word.contains('lj')){
-              num++;
-              word.replaceFirst('lj','');  
-            }
-        }
-        if(word.contains('nj')){
-            while(word.contains('nj')){
-              num++;
-              word.replaceFirst('nj','');  
-            }
-        }
-        if(word.contains('s=')){
-            while(word.contains('s=')){
-              num++;
-              word.replaceFirst('s=','');  
-            }
-        }
-        if(word.contains('z=')){
-            while(word.contains('z=')){
-              num++;
-              word.replaceFirst('z=','');  
-            }
-        }
-        num += word.length;
+        word=contain(word,"c=");
+        word=contain(word,"c-");
+        word=contain(word,"dz=");
+        word=contain(word,"d-");
+        word=contain(word,"lj");
+        word=contain(word,"nj");
+        word=contain(word,"s=");
+        word=contain(word,"z=");
+        num += word.length();
         System.out.println(num);
     }
+    public static String contain (String word,String a) {
+		if(word.contains(a)) {
+	        	word=word.replaceAll(a," ");
+		}
+		return word;
+	}
 }
+
