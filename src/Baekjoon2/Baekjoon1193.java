@@ -7,35 +7,28 @@ public class Baekjoon1193 {
 	public static void main(String[] args) throws IOException{
 		Scanner sc = new Scanner(System.in);
 		int num = sc.nextInt();
-		int a = 1;
-		int b = 1;
-		int temp = 1;
-		while(num>0) {
-			
-			
-			num--;
-			
+		int line =0;
+		int count =0;
+		while(true) {
+			for(int i=0;i<line+1;i++) {
+				count++;
+			}
+			line++;
+			if(count>=num)break;
+		}
+		int sum=0;
+		for(int i=0;i<line;i++) {
+			sum += i;
+		}
+		int be = num-sum;
+		if(line%2==0) {
+			System.out.print(be);
+			System.out.print("/");
+			System.out.print(line+1-be);
+		}else {
+			System.out.print(line+1-be);
+			System.out.print("/");
+			System.out.print(be);
 		}
 	}
 }
-/*
-1-1/1
-2-1/2
-3-2/1
-4-3/1
-5-2/2
-6-1/3
-7-1/4
-8-2/3
-9-3/2
-10-4/1
-11-5/1
-12-4/2
-13-3/3
-14-2/4
-15-1/5
-16-1/6
-17-2/5
-18-3/4
-
-*/
