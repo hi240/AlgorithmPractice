@@ -10,23 +10,50 @@ public class baekjoon2108 {
 		Scanner sc = new Scanner(System.in);
 		int testnum = sc.nextInt();
 		int[] num = new int[testnum];
-		
 		int sum =0;
 		int mid =0;
 		int freq = 0;
 		int range = 0;
 		
+		//»ê¼úÆò±Õ
 		for(int i=0;i<testnum;i++) {
 			num[i]=sc.nextInt();
 			sum +=num[i];
 		}
-		sum /=testnum;
+		sum = (int)Math.round(((double)sum/(double)testnum));
 		
 		//Áß¾Ó°ª
 		Arrays.sort(num);
+		mid=num[(testnum/2)];
 		
-		for(int i=0;i<testnum;i++) {
-			
+		//¹üÀ§
+		range=num[testnum-1]-num[0];
+		
+		//ÃÖºó°ª
+		int[] arr= new int[8001];
+		for(int i=0;i<num.length;i++) {
+			arr[num[i]+4000]++;
 		}
+		int max2=0;
+		for(int i=0;i<arr.length;i++) {
+			if(max2<arr[i]) {
+				max2=arr[i];
+				freq=i-4000;
+			}
+		}
+		int count=0;
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i]==max2) {
+				count++;
+			}
+			if(count>1) {
+				freq=i-4000;
+				break;
+			}
+		}
+		System.out.println(sum);
+		System.out.println(mid);
+		System.out.println(freq);
+		System.out.println(range);
 	}
 }
