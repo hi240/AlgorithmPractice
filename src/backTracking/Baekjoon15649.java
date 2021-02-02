@@ -15,7 +15,6 @@ public class Baekjoon15649 {
 		sc.close();
 		check = new boolean [n];
 		arr = new int[m];
-		
 		recursive(n,m,0);
 		System.out.println(sb);
 	}
