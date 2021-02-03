@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Baekjoon15649 {
 	static boolean check[];
 	static int arr[];
-	static int index=0;
+	static int depth=0;
 	static StringBuilder sb = new StringBuilder();
 	public static void main(String[] args) throws IOException{
 		Scanner sc = new Scanner(System.in);
@@ -18,8 +18,8 @@ public class Baekjoon15649 {
 		recursive(n,m,0);
 		System.out.println(sb);
 	}
-	public static void recursive (int n,int m,int index) {
-		if(index==m) { 
+	public static void recursive (int n,int m,int depth) {
+		if(depth==m) { 
 			for(int i=0;i<arr.length;i++) {
 				sb.append(arr[i]);
 				if(i!=arr.length-1)sb.append(" ");
@@ -30,8 +30,8 @@ public class Baekjoon15649 {
 		for(int i=0;i<n;i++) {
 			if(!check[i]) { 
 				check[i]=true;
-				arr[index]=i+1; 
-				recursive(n,m,index+1);
+				arr[depth]=i+1; 
+				recursive(n,m,depth+1);
 				check[i]=false;
 			}
 		}
