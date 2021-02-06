@@ -1,7 +1,6 @@
 package backTracking;
 
 import java.util.Scanner;
-
 //½ºµµÄí
 public class Baekjoon2580_1 {
 	public static int[][] arr=new int[9][9];
