@@ -1,5 +1,6 @@
 package backTracking;
 
+import java.io.IOException;
 import java.util.Scanner;
 //연산자 끼워넣기
 public class Baekjoon14888 {
@@ -9,7 +10,7 @@ public class Baekjoon14888 {
 	public static int[] math= new int[4];
 	public static int testnum;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		
 		Scanner sc = new Scanner(System.in);
 		testnum = sc.nextInt();
@@ -19,7 +20,7 @@ public class Baekjoon14888 {
 			number[i]=sc.nextInt();
 		}
 		
-		for(int i=0;i<testnum;i++) {
+		for(int i=0;i<4;i++) {
 			math[i]=sc.nextInt();
 		}
 		
@@ -33,7 +34,6 @@ public class Baekjoon14888 {
 	public static void recursive(int num,int depth) {
 
 		if(depth==testnum) {
-			System.out.println(num);
 			min=Math.min(min, num);
 			max=Math.max(max, num);
 			return;
