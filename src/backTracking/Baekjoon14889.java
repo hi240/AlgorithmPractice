@@ -43,6 +43,7 @@ public class Baekjoon14889 {
 		for(int i=at;i<n;i++) {
 			if(!check[i]) {
 				check[i]=true;
+				System.out.println((i+1)+" i"+(depth+1)+" depth");
 				recursive(i+1,depth+1);
 				check[i]=false;
 			}
@@ -65,7 +66,5 @@ public class Baekjoon14889 {
 		}
 		sum=Math.min(sum,Math.abs(start-link));
 		
-		
 	}
-		
 }
