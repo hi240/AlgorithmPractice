@@ -1,4 +1,4 @@
-package BFS;
+package BFS_DFS;
 //DFS¿Í BFS
 
 import java.io.BufferedReader;
