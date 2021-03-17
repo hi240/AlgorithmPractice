@@ -6,14 +6,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.StringTokenizer;
 
-//단지번호붙이기
-/*
-노드 연결이 끝날때마다 카운트 된 수 = 총 단지 수
-각 노드가 깊어질때마다 카운트 된 수 배열로다가 = 각 단지의 총합 
- */
-//DFS로 풀어보겠습니당
+//단지번호붙이기 (DFS)
 public class Baekjoon2667 {
 	static int N;
 	static int[][] map;
@@ -33,18 +29,16 @@ public class Baekjoon2667 {
 		}
 		ArrayList<Integer>list = new ArrayList<Integer>();
 		
-		for(int i=1;i<=N;i++) {
-			for(int j=1;j<=N;j++) {
+		for(int i=0;i<N;i++) {
+			for(int j=0;j<N;j++) {
 				if(check(i,j)) {
 					int a=dfs(i,j);
 					list.add(a);
 				}
 			}
 		}
-		System.out.println(list.size()); //단지가 몇개인지.
-//		for(int i:list) {
-//			System.out.println(list.get(i)); //각 단지가 몇개인지.
-//		}
+		System.out.println(list.size());
+		Collections.sort(list);
 		for(int i=0;i<list.size();i++) {
 			System.out.println(list.get(i));
 		}
