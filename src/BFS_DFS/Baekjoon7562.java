@@ -21,7 +21,6 @@ class CHS{
 	}
 }
 public class Baekjoon7562 {
-	static int testnum;
 	static int l;
 	static int from_x,from_y;
 	static int to_x,to_y;
@@ -30,7 +29,7 @@ public class Baekjoon7562 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st = new StringTokenizer(br.readLine()," ");
-		testnum= Integer.parseInt(st.nextToken());
+		int testnum= Integer.parseInt(st.nextToken());
 		
 		for(int i=0;i<testnum;i++) {
 			st = new StringTokenizer(br.readLine()," ");
