@@ -21,7 +21,8 @@ import java.io.OutputStreamWriter;
 public class Baekjoon2630 {
 	static int size;
 	static int[][] map;
-	static int sum;
+	static int blue;
+	static int white;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -34,34 +35,53 @@ public class Baekjoon2630 {
 				map[i][j]= Integer.parseInt(arr[j]);
 			}
 		}
-		System.out.println(1/2);
 		func();
-		
 	}
-	
 	public static void func() {
 		
 		int start=0;
 		int end=size/2; //4
-		int num=size/2; //2
+		int num=size/2; //4
+		int index=1;
 		
 		while(num!=0) {
 		
 			while(start!=size) {
-				
-				for(int i=start;i<end;i++) { // 0~2 2~4
-					
+				int k=map[start][start];
+				System.out.println("k "+start+" "+end);
+				int count=0;
+				Loop1: for(int i=start;i<end;i++) {
+					for(int j=start;j<end;j++) {
+						if(map[i][j]==3) break Loop1;
+						if(map[i][j]==k) {
+							count++;
+						}else break Loop1;
+					}
 				}
-				           //num = 4 / 2
-				start=end; //start= 0 4 / 0 2 4 6
-				end=2*num; //end = 4 8 / 2 4 6 8
-				
+				if(count==end-start) {
+					System.out.println("dd "+start);
+					if(k==0) white=count;
+					else blue=count;
+					for(int i=start;i<end;i++) {
+						for(int j=start;j<end;j++) {
+							map[i][j]=3;
+						}
+					}
+				}
+				start=end;
+				index++;
+				end=index*num;
 			}
-			start=0;
-			end=num;
-			num /=2; //2
-		}
 			
+			index=1;
+			start=0;
+			num /=2;
+			end=num;
+			
+		}
+		
+		System.out.println(white);
+		System.out.println(blue+"³¡");
 	}
 }
 
