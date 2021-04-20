@@ -19,6 +19,7 @@ public class Keypad {
 	                case 2:
 	                case 5:
 	                case 8:
+	                case 0:
 	                    int tleft=check(left,numbers[i]);
 	                    int tright=check(right,numbers[i]);
 	                    if(tleft==tright){
@@ -36,26 +37,14 @@ public class Keypad {
 	                        right=numbers[i];
 	                        break;
 	                    } 
-	                case 0: 
-	                    if(check(left,11)==check(right,11)){
-	                         if(hand.equals("left")){
-	                             sb.append("L"); left=numbers[i]; break;
-	                        }else{
-	                             sb.append("R"); right=numbers[i]; break;
-	                        }
-	                    }else if(check(left,11)<check(right,11)){
-	                        sb.append("L"); left=numbers[i]; break;
-	                    }else{
-	                        sb.append("R"); right=numbers[i]; break;
-	                    }
 	            }
 	        }
 	        String answer=sb.toString();
 	        return answer;
 	    }
 	    public int check(int from,int to){
-	        if(from==0) from=11;
-	        if(to==0) to=11;
+	        from= (from==0)? 11:from;
+	        to= (to==0)? 11:to;
 	        int x = (from-1)/3;
 	        int y = (from+2)%3;
 	        int num_x = to/3;
