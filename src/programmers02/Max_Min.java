@@ -5,15 +5,16 @@ import java.util.StringTokenizer;
 public class Max_Min {
 	public static void main(String[] args) {
 		String s ="1 2 3 4";
-	    StringTokenizer st = new StringTokenizer(s," ");
+		StringTokenizer st = new StringTokenizer(s," ");
         int max=Integer.MIN_VALUE;
         int min=Integer.MAX_VALUE;
         while(st.hasMoreTokens()){
-            if(max<Integer.parseInt(st.nextToken())){
-                max=Integer.parseInt(st.nextToken());
+            int a=Integer.parseInt(st.nextToken());
+            if(max<a){
+                max=a;
             }
-            if(min>Integer.parseInt(st.nextToken())){
-                min=Integer.parseInt(st.nextToken());
+            if(min>a){
+                min=a;
             }
         }
         String answer = String.valueOf(min)+" "+String.valueOf(max);
