@@ -12,7 +12,9 @@ public class baekjoon10773 {
 		for(int i=0;i<num;i++) {
 			int n=sc.nextInt();
 			if(n==0) stk.pop();
-			stk.add(n);
+			else {
+				stk.add(n);
+			}
 		}
 		int sum=0;
 		while(!stk.isEmpty()) {
