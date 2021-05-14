@@ -3,7 +3,7 @@ package BFS_DFS;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-//스타트링크
+//스타트링크 (DFS시간초과)
 public class Baekjoon5014 {
 	public static int f;
 	public static int g;
@@ -25,24 +25,15 @@ public class Baekjoon5014 {
 			System.out.println(count);
 			System.exit(0);
 		}
-		if(s+u<=g) {
-			if(s+u==s) {
-				System.out.println("use the stairs");
-				return;
-			}
+		if(s+u<=f&&u!=0) {
 			dfs(s+u,count+1);
 			return;
 		}
-		if(s-d>=1) {
-			if(s-d==s) {
-				System.out.println("use the stairs");
-				return;
-			}
+		if(s-d>=1&&d!=0) {
 			dfs(s-d,count+1);
 			return;
 		}
-		
 		System.out.println("use the stairs");
-		return;
+		System.exit(0);
 	}
 }
