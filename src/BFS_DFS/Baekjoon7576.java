@@ -1,5 +1,4 @@
 package BFS_DFS;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -33,16 +32,16 @@ public class Baekjoon7576 {
 	public static void bfs() {
 		int[] x = {1,0,-1,0};
 		int[] y = {0,1,0,-1};
-		Queue<DOT> que = new LinkedList<DOT>();
+		Queue<DT> que = new LinkedList<DT>();
 		for(int i=0;i<N;i++) {
 			for(int j=0;j<M;j++) { //0ÀÌ ÇÏ³ª¶óµµ ÀÕÀ¸¸é µÊ.
 				if(graph[i][j]==1) {
-					que.add(new DOT(i,j));
+					que.add(new DT(i,j));
 				}
 			}
 		}
 		while(!que.isEmpty()) {
-			DOT dot = que.poll();
+			DT dot = que.poll();
 			for(int i=0;i<4;i++) {
 				int _x = dot.x+x[i];
 				int _y = dot.y+y[i];
@@ -53,7 +52,7 @@ public class Baekjoon7576 {
 					continue;
 				}
 				graph[_x][_y]=graph[dot.x][dot.y]+1;
-				que.add(new DOT(_x,_y));
+				que.add(new DT(_x,_y));
 			}
 		}
 		int max=0;
@@ -77,10 +76,10 @@ public class Baekjoon7576 {
 //	        }
 //	    }
 }
-class DOT{
+class DT{
 	int x;
 	int y;
-	DOT(int x,int y){
+	DT(int x,int y){
 		x=this.x;
 		y=this.y;
 	}
