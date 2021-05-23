@@ -1,7 +1,5 @@
 package BFS_DFS;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 
 //로봇 청소기
@@ -30,14 +28,17 @@ public class Baekjoon14503 {
 		
 	}
 	public static void dfs(int x,int y,int d,int wall) {
-		System.out.println("보는곳 "+x+"x "+y+"y "+d+"d");
-		if(map[x][y]==0) {
-			map[x][y]=1; //청소
+		if(!visit[x][y]) {
+			visit[x][y]=true;
 			num++;
 			wall=0;
 		}
-		if(left(x,y,d)) { //a.
-			System.out.println("hh?");
+//		if(map[x][y]==0) {
+//			map[x][y]=1; //청소
+//			num++;
+//			wall=0;
+//		}
+		if(left(x,y,d)&&!visit[x][y]) { //a.
 			switch(d) {
 			case 0: dfs(x,y-1,3,wall); break;
 			case 1: dfs(x-1,y,0,wall); break;
@@ -45,10 +46,9 @@ public class Baekjoon14503 {
 			case 3: dfs(x+1,y,2,wall); break;
 			}
 		}else { //b.
-			System.out.println("bb?");
 			wall +=1;
 			if(wall==4) {
-				if(back(x,y,d)) { //뒤에 가능하면,
+				if(back(x,y,d)&&!visit[x][y]) { //뒤에 가능하면,
 					switch(d) {
 					case 0: dfs(x+1,y,d,wall); break;
 					case 1: dfs(x,y-1,d,wall); break;
@@ -85,12 +85,11 @@ public class Baekjoon14503 {
 		return true;
 	}
 	public static boolean back(int x,int y,int d) {
-		System.out.println("여기서 걸렸어? "+x+" "+y+" "+d);
 		switch(d) {
-		case 0: if(map[x+1][y]==1) {System.out.println("누"); return false; }break;
-		case 1: if(map[x][y-1]==1) {System.out.println("이거?");return false;}break;
-		case 2: if(map[x-1][y]==1) {System.out.println("f");return false;}break;
-		case 3: if(map[x][y+1]==1) {System.out.println("ne");return false;}break;
+		case 0: if(map[x+1][y]==1) {return false; }break;
+		case 1: if(map[x][y-1]==1) {return false;}break;
+		case 2: if(map[x-1][y]==1) {return false;}break;
+		case 3: if(map[x][y+1]==1) {return false;}break;
 		}
 		return true;
 	}
