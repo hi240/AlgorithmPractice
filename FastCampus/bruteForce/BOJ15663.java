@@ -1,28 +1,31 @@
 package bruteForce;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-
+//n°úm(9)
 public class BOJ15663 {
     public static int N,M;
-    public static int[] arr;
-    public static ArrayList<String> list;
+    public static int[] arr,num,used;
+    public static boolean[] check;
     public static void main(String[] args) {
         input();
-        dfs(0,"");
-        System.out.println(list.toString());
+        dfs(0);
     }
-    public static void dfs(int depth,String sum){
+    public static void dfs(int depth){
         if(depth==M){
-        	for(int i=0;i<list.size();i++) {
-        		if(list.get(i).equals(sum)) return;
-        	}
-        	list.add(sum);
+            for(int i=0;i<M;i++){
+                System.out.print(num[i]+" ");
+            }
+            System.out.println();
         }else {
+            int lastIndex=0;
             for(int i=0;i<N;i++){
-            	if(arr[i]==arr[depth]) continue;
-                dfs(depth+1,sum+" "+arr[i]);
+                if(used[i]==1) continue;
+                if(lastIndex==arr[i]) continue;
+                num[depth]=arr[i]; used[i]=1;
+                lastIndex=num[depth];
+                dfs(depth+1);
+                num[depth]=0; used[i]=0;
             }
         }
     }
@@ -31,12 +34,12 @@ public class BOJ15663 {
         N = sc.nextInt();
         M = sc.nextInt();
         arr = new int[N];
+        num = new int[M];
+        used = new int[N];
         for(int i=0;i<N;i++){
             arr[i]=sc.nextInt();
         }
-        list = new ArrayList<String>();
         Arrays.sort(arr);
         sc.close();
     }
 }
-
