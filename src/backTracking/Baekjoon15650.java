@@ -3,7 +3,7 @@ package backTracking;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Baekjoon15670 {
+public class Baekjoon15650 {
 	static int[] arr;
 	public static void main(String[] args) throws IOException{
 		Scanner sc = new Scanner(System.in);

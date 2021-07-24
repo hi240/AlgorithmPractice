@@ -3,7 +3,7 @@ package bruteForce;
 import java.util.Arrays;
 import java.util.Scanner;
 
-//¿¬»êÀÚ³¢¿ö³Ö±â
+//
 public class BOJ14888 {
 	static StringBuilder sb = new StringBuilder();
 	static int N;
@@ -13,8 +13,8 @@ public class BOJ14888 {
 	static int min=Integer.MAX_VALUE;
 	public static void main(String[] args) {
 		input();
-		System.out.println("ÃÖ´ë°ª"+max);
-		System.out.println("ÃÖ¼Ò°ª"+min);
+		System.out.println("ï¿½Ö´ë°ª"+max);
+		System.out.println("ï¿½Ö¼Ò°ï¿½"+min);
 	}
 	public static void input() {
 		Scanner sc = new Scanner(System.in);
