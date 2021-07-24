@@ -1,6 +1,8 @@
+package bruteForce;
+
 import java.util.Arrays;
 import java.util.Scanner;
-
+//n°úm(9)
 public class BOJ15663 {
     public static int N,M;
     public static int[] arr,num,used;

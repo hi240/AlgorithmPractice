@@ -1,7 +1,8 @@
 package bruteForce;
+
 import java.util.Arrays;
 import java.util.Scanner;
-
+//암호 만들기
 public class BOJ1759 {
     public static int L,C;
     public static String[] arr;

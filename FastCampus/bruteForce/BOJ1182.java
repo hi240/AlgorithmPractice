@@ -1,4 +1,8 @@
+package bruteForce;
+
 import java.util.Scanner;
+
+//부분수열의 합
 
 public class BOJ1182 {
     public static int N,S,num;
@@ -28,4 +32,5 @@ public class BOJ1182 {
         }
         sc.close();
     }
+
 }

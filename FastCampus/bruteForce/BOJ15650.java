@@ -1,5 +1,6 @@
+package bruteForce;
 import java.util.Scanner;
-//nê³¼m(2)
+//n°úm(2)
 public class BOJ15650 {
     static StringBuilder sb = new StringBuilder();
     static int n,m;

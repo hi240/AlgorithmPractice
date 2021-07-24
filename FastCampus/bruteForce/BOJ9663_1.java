@@ -1,5 +1,4 @@
 package bruteForce;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class BOJ9663_1 {
