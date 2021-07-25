@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//Ã¼½ºÆÇ ´Ù½Ã Ä¥ÇÏ±â
+//Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ Ä¥ï¿½Ï±ï¿½
 public class Baekjoon1018 {
 	public static void main(String[] args) throws IOException{
 		Scanner sc = new Scanner (System.in);
@@ -47,6 +47,6 @@ public class Baekjoon1018 {
 				max=arr.get(i);
 			}
 		}
-		arr.get(arr.);
+
 	}
 }

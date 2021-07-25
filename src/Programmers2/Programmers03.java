@@ -1,16 +1,14 @@
 package Programmers2;
 /*
-124 ³ª¶óÀÇ ¼ýÀÚ
+124 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 n	result
 1	1
 2	2
 3	4
 4	11
  */
-public class Programmers03 {
 
-}
-class Solution {
+public class Programmers03 {
     public String solution(int n) {
         String answer = "";
         int num=0;
@@ -35,6 +33,6 @@ class Solution {
 10/3, 10%3 = 3 , 1, 41
 11/3 11%3 = 3, 2 , 42
 12/3 12%3 = 4, 0 , 44
-/´Â ¸ò µû¶ó °¡µÇ, %´Â 0Àº 4·Î ¹Ù²Û´Ù.
+/ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, %ï¿½ï¿½ 0ï¿½ï¿½ 4ï¿½ï¿½ ï¿½Ù²Û´ï¿½.
 */
 

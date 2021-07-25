@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Programmers24 {
 	public static void main(String[] args) throws IOException{
 		int[]stages = {1,2,3};
-		System.out.println(solution(3, stages)); 
+	//	System.out.println(solution(3, stages));
     	        
 	}
 	
@@ -20,12 +20,12 @@ public class Programmers24 {
     	        	arr[i]= Integer.parseInt(String.valueOf(fail[i]));
     	        }
     	        //[125, 420, 500, 500, 0]
-    	        Arrays.sort(arr,new Comparator<Integer>() {
-    	        	@Override 
-    	        	public int compare(double a,double b) {
-    	        		return a;
-    	        	}
-    	        }); 
+//    	        Arrays.sort(arr,new Comparator<Integer>() {
+//    	        	@Override
+//    	        	public int compare(double a,double b) {
+//    	        		return a;
+//    	        	}
+//    	        });
     	        return answer;
     	        
     	      
