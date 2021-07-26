@@ -1,3 +1,4 @@
+package Programmers1;
 /*
 2016�� 1�� 1���� �ݿ����Դϴ�. 2016�� a�� b���� ���� �����ϱ��?
 �� �� a ,b�� �Է¹޾� 2016�� a�� b���� ���� �������� �����ϴ� �Լ�, solution�� �ϼ��ϼ���.
@@ -13,7 +14,7 @@ a	b	result
 30�� 6��,4,9,11
 29�� 2��
  */
-class Programmers8 {
+public class Programmers8 {
     public String solution(int a, int b) {
     	int day =0;
         String answer = "";

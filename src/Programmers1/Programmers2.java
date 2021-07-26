@@ -19,7 +19,7 @@ ex)answers	return
 [1,2,3,4,5]	[1]
 [1,3,2,4,2]	[1,2,3]
  */
-class Programmers2 {
+public class Programmers2 {
     public int[] solution(int[] answers) {
     	
         int[] one = {1,2,3,4,5};
