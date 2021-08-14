@@ -1,7 +1,5 @@
 package toss;
 
-import java.util.Scanner;
-
 public class Fourth {
     public static int m,n;
     public static void main(String[] args) {
