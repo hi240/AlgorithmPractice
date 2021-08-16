@@ -1,47 +1,43 @@
 package twoPointers;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Arrays;
-
+import java.util.Scanner;
 //좋다
-//수의 위치가 다르면 에서 수열임을 나타냄.
 public class BOJ1253 {
     public static int N;
     public static int[] arr;
-    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         input();
         sol();
     }
     public static void sol(){
-        Arrays.sort(arr,1,N+1);
+        Arrays.sort(arr,1,arr.length);
         int sum=0;
-        for(int i=1;i<=N;i++){
-            int l=1,r=N;
-            while(l<r){
-                if(l==i) l++;
-                else if(r==i) r--;
-                else {
-                    if (arr[i] == arr[l] + arr[r]) {
-                        sum++;
-                        break;
-                    } else if (arr[i] < arr[l] + arr[r]) {
-                        r--;
-                    } else l++;
-                    if (l == r) break;
-                }
-            }
+        for(int l=1;l<=N;l++){
+            if(chek(l)) sum++;
         }
         System.out.println(sum);
     }
-    public static void input() throws IOException {
-        N=Integer.parseInt(br.readLine());
-        String[] str = br.readLine().split(" ");
+    public static boolean chek(int index){
+        int l=1,r=N;
+        while(l<r){
+            if(l==index){
+                l++; continue;
+            }else if(r==index){
+                r--; continue;
+            }
+            if(arr[l]+arr[r]==arr[index]) return true;
+            if(arr[l]+arr[r]>arr[index]) r--;
+            else l++;
+        }
+        return false;
+    }
+    public static void input() {
+        Scanner sc = new Scanner(System.in);
+        N=sc.nextInt();
         arr = new int[N+1];
         for(int i=1;i<=N;i++){
-            arr[i]=Integer.parseInt(str[i-1]);
+            arr[i]=sc.nextInt();
         }
     }
 }
