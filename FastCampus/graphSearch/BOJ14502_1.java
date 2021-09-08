@@ -7,60 +7,80 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 //연구소
-public class BOJ14502_1 {
+public class BOJ14502_1{
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static int N,M;
-    public static int[][] arr;
-    public static int[][] dir={{1,0},{0,1},{-1,0},{0,-1}};
+    public static int N,M,max;
+    public static int[][] graph;
+    public static int[][] graph_copy;
+    public static boolean[][] visit;
+    public static int result=0;
+    public static int[][] loc= {{1,0},{0,1},{-1,0},{0,-1}};
     public static void main(String[] args) throws IOException {
         input();
         dfs(0);
+        System.out.println(result);
     }
     public static void dfs(int depth){
-        if(depth==3){
-            bfs();
+        if(depth==3){ //벽을 최대 3개 세울 수 있다
+            bfs(); //벽 세우면, 바이러스 분포에 들어감.
             return;
         }
         for(int i=0;i<N;i++){
             for(int j=0;j<M;j++){
-                if(arr[i][j]==0){
-                    arr[i][j]=1;
-                    dfs(depth+1);
+                if(graph[i][j]==0){ //벽이 아니라면
+                    graph[i][j]=1; //벽을 세우고,
+                    dfs(depth+1); //다음 벽을 세우러 재귀
+                    graph[i][j]=0; //dfs 다돌면 다른 경우의 수를 위해 초기화
                 }
             }
         }
     }
     public static void bfs(){
-        int[][] copy_arr=new int[N][M];
+        graph_copy=new int[N][M]; //dfs를 통해 벽이 세워진 graph를 지역변수로 복사
+        visit=new boolean[N][M]; //4방면 돌 때 바이러스 원산지 중복 확인용
         Queue<Integer> q = new LinkedList<>();
-        for(int i=0;i<N;i++){
+        for(int i=0;i<N;i++) {
             for(int j=0;j<M;j++){
-                copy_arr[i][j]=arr[i][j];
-                if(copy_arr[i][j]==2){
-                    q.add(i);
+                graph_copy[i][j]=graph[i][j]; //복사
+                if(graph_copy[i][j]==2){ //바이러스가 있으면,
+                    q.add(i); //각 좌표 q에 추가
                     q.add(j);
                 }
             }
         }
         while(!q.isEmpty()){
-            int x=q.poll();
+            int x=q.poll(); //바이러스 있는 곳 부터 시작
             int y=q.poll();
-            for(int i=0;i<4;i++){
-                int temp_x=x+dir[i][0];
-                int temp_y=y+dir[i][1];
-                if(copy_arr[temp_x][temp_y])
+            visit[x][y]=true; //방문처리
+            for(int i=0;i<4;i++){ //바이러스 기준으로 사방면 확인
+                int _x=x+loc[i][0];
+                int _y=y+loc[i][1];
+                if(_x<0||_y<0||_x>=N||_y>=M) continue; //그래프 범위 넘으면 패스
+                if(visit[_x][_y]) continue; //이미 방문했을 시 패스
+                if(graph_copy[_x][_y]==0){ //바닥일 경우,
+                    graph_copy[_x][_y]=2; //바이러스 퍼뜨리기
+                    q.add(_x); //q에 넣기
+                    q.add(_y);
+                }
             }
         }
+        int cnt=0;
+        for(int i=0;i<N;i++){
+            for(int j=0;j<M;j++){
+                if(graph_copy[i][j]==0) cnt++; //안전한 곳 갯수 카운트
+            }
+        }
+        result=Math.max(cnt,result); //결과 갱신
     }
     public static void input() throws IOException {
-        String[] str =br.readLine().split(" ");
+        String[] str=br.readLine().split(" ");
         N=Integer.parseInt(str[0]);
         M=Integer.parseInt(str[1]);
-        arr= new int[N][M];
+        graph=new int[N][M];
         for(int i=0;i<N;i++){
-            String[] str_ =br.readLine().split(" ");
+            String[] st=br.readLine().split(" ");
             for(int j=0;j<M;j++){
-                arr[i][j] = Integer.parseInt(str_[j]);
+                graph[i][j]=Integer.parseInt(st[j]);
             }
         }
     }
