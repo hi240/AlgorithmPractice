@@ -15,9 +15,6 @@ public class BOJ1012 {
     public static Queue<Integer> q = new LinkedList<>();
     public static boolean[][] visit;
     public static void main(String[] args) throws IOException {
-        input();
-    }
-    public static void input() throws IOException {
         T=Integer.parseInt(br.readLine());
         for(int i=0;i<T;i++){
             String[] st = br.readLine().split(" ");
@@ -37,12 +34,11 @@ public class BOJ1012 {
         int cnt=0;
         for(int i=0;i<M;i++) {
             for (int j = 0; j < N; j++) {
-                if (visit[i][j]) continue;
-                if (graph[i][j] == 1) {
+                if (graph[i][j] == 1&&!visit[i][j]) {
+                    visit[i][j]=true;
                     q.add(i);
                     q.add(j);
                     bfs();
-                    System.out.println(i+" "+j);
                     cnt++;
                 }
             }
@@ -54,16 +50,15 @@ public class BOJ1012 {
         while(!q.isEmpty()){
             int x=q.poll();
             int y=q.poll();
-            visit[x][y]=true;
-            System.out.println(x+"x "+y+"y ");
             for(int i=0;i<4;i++){
-                int _x=dir[i][0];
-                int _y=dir[i][1];
+                int _x=x+dir[i][0];
+                int _y=y+dir[i][1];
                 if(_x<0||_y<0||_x>=M||_y>=N) continue;
                 if(visit[_x][_y]) continue;
                 if(graph[_x][_y]==1){
                     q.add(_x);
                     q.add(_y);
+                    visit[_x][_y]=true;
                 }
             }
         }
