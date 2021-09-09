@@ -21,39 +21,35 @@ public class BOJ4963 {
     }
     public static void sol(){
         visit = new boolean[h][w];
-        int cnt=0;
+        int cnt=0; //땅갯수
         for(int i=0;i<h;i++){
             for(int j=0;j<w;j++){
-                if(graph[i][j]==1&&!visit[i][j]){
-                    visit[i][j]=true;
+                if(graph[i][j]==1&&!visit[i][j]){ //땅이고, 방문한적없으면
+                    visit[i][j]=true; //방문체크
                     q.add(i);
                     q.add(j);
-                    bfs();
+                    bfs(); //발견한 땅부터 시작해서 이어진 땅 다 돌기
                     cnt++;
                 }
             }
         }
-        for(int i=0;i<h;i++) {
-            for (int j = 0; j < w; j++) {
-                System.out.print(visit[i][j]);
-            }
-            System.out.println();
-        }
         System.out.println(cnt);
     }
     public static void bfs(){
-        int[][] dir = {{1,0},{0,1},{-1,0},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}};
+        int[][] dir = {{1,0},{0,1},{-1,0},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}}; //4방향+대각선까지
         while(!q.isEmpty()){
             int x=q.poll();
             int y=q.poll();
-            for(int i=0;i<8;i++){
+            for(int i=0;i<8;i++){ //4방향+대각선 돌기
                 int _x=x+dir[i][0];
                 int _y=y+dir[i][1];
-                if(_x<0||_y<0||_x>=h||_y>=w) continue;
-                if(visit[_x][_y]) continue;
-                visit[_x][_y]=true;
-                q.add(_x);
-                q.add(_y);
+                if(_x<0||_y<0||_x>=h||_y>=w) continue; //그래프 넘으면 패스
+                if(visit[_x][_y]) continue; //방문했으면 패스
+                if(graph[_x][_y]==1){ //땅이면,
+                    visit[_x][_y]=true; //방문체크
+                    q.add(_x);
+                    q.add(_y);
+                }
             }
         }
     }
@@ -62,7 +58,7 @@ public class BOJ4963 {
             String[] st = br.readLine().split(" ");
             w=Integer.parseInt(st[0]);
             h=Integer.parseInt(st[1]);
-            if(w==0&&h==0) break;
+            if(w==0&&h==0) break; // 0 0 입력받으면 프로그램 종료
             graph = new int[h][w];
             for(int i=0;i<h;i++){
                 String[] str =br.readLine().split(" ");
