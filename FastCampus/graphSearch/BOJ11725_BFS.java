@@ -8,33 +8,30 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 //트리의 부모 찾기 (BFS)
-//아예 배열에 모든 수의 부모를 저장해놓는 배열을 만들고, 그 배열을 출력하는 아이디어.
-//내가 bfs에서 막힌거는, 한 숫자를 마주할 때 마다 bfs를 타서 인접한 점을 타고 1을 만날때까지 이동후, 1을 만나는 점중에
-//젤 가까운 애를 출력하느라고 오래 걸릴 수밖에..
 public class BOJ11725_BFS {
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static int N;
     public static ArrayList<Integer>[] list; //정점 관계성 저장
     public static int[] parent; //정점의 부모를 저장할 배열
+    public static int N;
     public static void main(String[] args) throws IOException {
         input();
         bfs(1);
         for(int i=2;i<parent.length;i++){
-            System.out.println(parent[i]);
+            System.out.println(parent[i]); //두번째 노드부터 부모노드 출력
         }
     }
-    public static void bfs(int n){
+    public static void bfs(int n){ //부모노드 찾기
         Queue<Integer> q = new LinkedList<>();
         boolean[] visit = new boolean[N+1];
         q.add(n);
         visit[n]=true;
         while(!q.isEmpty()){
-            int mom=q.poll();
-            for(int i:list[mom]){
-                if(visit[i]) continue;
-                parent[i]=mom;
-                visit[i]=true;
-                q.add(i);
+            int mom=q.poll(); //자식노드가 부모노드가 될 차례
+            for(int i:list[mom]){ //부모노드 mom의 자식노드 찾기
+                if(visit[i]) continue; //이미 노드 i보다 위에 있는건 패스
+                parent[i]=mom; //부모노드 데이터추가
+                visit[i]=true; //방문처리
+                q.add(i); //자식노드 추가
             }
         }
     }
