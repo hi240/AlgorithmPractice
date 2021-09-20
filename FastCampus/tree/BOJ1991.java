@@ -10,8 +10,8 @@ public class BOJ1991 {
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public static int N;
     public static StringBuilder sb = new StringBuilder();
-    public static ArrayList<Integer>[] leftchild;
-    public static ArrayList<Integer>[] rightchild;
+    public static ArrayList<Integer>[] leftchild; //왼쪽 자식노드
+    public static ArrayList<Integer>[] rightchild; //오른쪽 자식노드
     public static void main(String[] args) throws IOException {
         input();
         preorder('A');//전위 순회
