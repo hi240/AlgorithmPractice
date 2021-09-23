@@ -4,43 +4,41 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 //부동산 다툼
 public class BOJ20364 {
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static int N,Q;
+    public static int N,Q,num;
     public static ArrayList<Integer>[] list;
-    public static boolean[] visit; //점령유무
-    public static boolean chk;
-    //1.트리를 우선 만들고, 거기서 진행시키기
-    //그러면 각 숫자마다 부모노드를 기록하는 어레이리스트 만들고,
-    //각 숫자 함수에 대입했을때 부모노드에 방문그거없으면 0출력.
-    //2.또는 받을때마다 순차적으로 계산.
+    public static boolean[] visit;
     public static void main(String[] args) throws IOException {
         input();
     }
     public static void sol(int n){
-        System.out.println(n+" 번놈은");
-        chk=false;
-       dfs(1,1,n);
+        num=0;
+        dfs(1,1,n);
+        System.out.println(num);
     }
-    public static void dfs(int st,int mom,int n){
-       if(st==n) {
-           System.out.println("0");
+    public static void dfs(int st,int mom,int n){ //점령값인지 구하기
+       if(st==n) { 
            visit[st]=true;
            return;
        }
        for(int i:list[st]){
            if(i==mom) continue;
            dfs(i,st,n);
-           if(visit[i]) {
-               System.out.println(i+"이거지");
+           if(i==n&&visit[n]){
+               num=0;
                return;
            }
+           if(visit[n]&&visit[i]) { 
+               num=i;
+               return;
+           }
+           if(visit[n]) break;
        }
     }
-    public static void tree(int n){
+    public static void tree(int n){ //이진탐색트리 저장
         boolean chk=false;
         if(n*2<=N){
             list[n].add(n*2);
