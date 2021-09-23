@@ -1,0 +1,71 @@
+package tree;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+//부동산 다툼
+public class BOJ20364 {
+    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static int N,Q;
+    public static ArrayList<Integer>[] list;
+    public static boolean[] visit; //점령유무
+    public static boolean chk;
+    //1.트리를 우선 만들고, 거기서 진행시키기
+    //그러면 각 숫자마다 부모노드를 기록하는 어레이리스트 만들고,
+    //각 숫자 함수에 대입했을때 부모노드에 방문그거없으면 0출력.
+    //2.또는 받을때마다 순차적으로 계산.
+    public static void main(String[] args) throws IOException {
+        input();
+    }
+    public static void sol(int n){
+        System.out.println(n+" 번놈은");
+        chk=false;
+       dfs(1,1,n);
+    }
+    public static void dfs(int st,int mom,int n){
+       if(st==n) {
+           System.out.println("0");
+           visit[st]=true;
+           return;
+       }
+       for(int i:list[st]){
+           if(i==mom) continue;
+           dfs(i,st,n);
+           if(visit[i]) {
+               System.out.println(i+"이거지");
+               return;
+           }
+       }
+    }
+    public static void tree(int n){
+        boolean chk=false;
+        if(n*2<=N){
+            list[n].add(n*2);
+            list[n*2].add(n);
+            chk=true;
+        }
+        if(n*2+1<=N){
+            list[n].add(n*2+1);
+            list[n*2+1].add(n);
+            chk=true;
+        }
+        if(chk==true) tree(n+1);
+    }
+    public static void input() throws IOException {
+        String[] st = br.readLine().split(" ");
+       N=Integer.parseInt(st[0]);
+        Q=Integer.parseInt(st[1]);
+        visit=new boolean[N+1];
+        list=new ArrayList[N+1];
+        for(int i=0;i<list.length;i++){
+            list[i]= new ArrayList();
+        }
+        tree(1);
+        for(int i=0;i<Q;i++){
+           sol(Integer.parseInt(br.readLine()));
+        }
+    }
+}
