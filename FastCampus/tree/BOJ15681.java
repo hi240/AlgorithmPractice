@@ -6,13 +6,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//20210927
 //트리와 쿼리
 public class BOJ15681 {
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public static int N,R,Q;
-    public static ArrayList<Integer>[] list; //자식 노드 저장
-    public static int[] haha;
-    public static int temp;
+    public static ArrayList<Integer>[] list; //노드 관계성
+    public static int[] cnt; //자식노드의 갯수 저장
     public static void main(String[] args) throws IOException {
         input();
     }
@@ -21,8 +21,7 @@ public class BOJ15681 {
         N=Integer.parseInt(st[0]);
         R=Integer.parseInt(st[1]);
         Q=Integer.parseInt(st[2]);
-
-        haha=new int[N+1];
+        cnt=new int[N+1];
         list=new ArrayList[N+1];
         for(int i=0;i<list.length;i++){
             list[i]=new ArrayList<>();
@@ -34,25 +33,30 @@ public class BOJ15681 {
             list[x].add(y);
             list[y].add(x);
         }
-        sol();
-//        for(int i=0;i<Q;i++){
-//            String[] str = br.readLine().split(" ");
-//            Integer.parseInt(str[0]);
-//        }
+        sol(); //트리생성
+        for(int i=0;i<Q;i++){
+            int a = Integer.parseInt(br.readLine());
+            System.out.println(cnt[a]); //입력받은 노드의 자식노드 반환
+        }
     }
     public static void sol(){
-        tree(R,0);
-        System.out.println(Arrays.toString(haha));
+        tree(R,0); //루트노드 기준으로 트리생성
     }
     public static void tree(int r,int prev){
-        boolean chk=false;
         for(int i:list[r]){
             if(i==prev) continue;
-            chk=true;
             tree(i,r);
-            haha[r] +=haha[i];
+            cnt[r]+=cnt[i]; //자식노드의 갯수 누적
         }
-        if(!chk) haha[r]++;
-        //자식노드없어서 위에포문못탈경우 처리필요>haha[그수]++;
+        cnt[r]++; //자기자신도 자식노드에 포함
     }
 }
+
+
+
+
+
+
+
+
+
