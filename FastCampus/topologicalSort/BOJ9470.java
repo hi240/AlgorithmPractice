@@ -11,9 +11,8 @@ import java.util.Queue;
 //Strahler 순서
 public class BOJ9470 {
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static ArrayList<Integer>[] list; //가수순서저장
-    public static ArrayList<Integer>[] indeg; //가수순서저장
-    public static int[] incnt,score;
+    public static ArrayList<Integer>[] list;
+    public static int[] incnt,score,maxcnt;
     public static int m,k;
     public static void main(String[] args) throws IOException {
         int testcase=Integer.parseInt(br.readLine());
@@ -29,18 +28,16 @@ public class BOJ9470 {
         m=Integer.parseInt(st[1]);
         int p=Integer.parseInt(st[2]);
         list= new ArrayList[m+1];
-        indeg= new ArrayList[m+1];
-        incnt=new int[m+1];
-        score=new int[m+1];
+        incnt=new int[m+1]; //indegree
+        maxcnt=new int[m+1]; //노드가 최댓값으로 업데이트된 횟수 저장
+        score=new int[m+1]; //노드의 순서 저장
         for(int i=1;i<=m;i++){
             list[i]=new ArrayList<>();
-            indeg[i]=new ArrayList<>();
         }
         for(int i=0;i<p;i++){
             String[] str= br.readLine().split(" ");
             int x=Integer.parseInt(str[0]),y=Integer.parseInt(str[1]);
             list[x].add(y);
-            indeg[y].add(x);
             incnt[y]++;
         }
     }
@@ -49,27 +46,23 @@ public class BOJ9470 {
         for(int i=1;i<=m;i++){
             if(incnt[i]==0){
                 q.add(i);
-                score[i]=1;
+                score[i]=1; maxcnt[i]=1; //indegree가 없는 i는 최대갱신횟수도 1번이다.
             }
         }
         while(!q.isEmpty()){
             int x = q.poll();
+            if(maxcnt[x]>1) score[x] +=1; //갱신횟수가 2번이상이면 score에 1을 더한다.
             for(int y:list[x]){
                 incnt[y]--;
-                if(score[y]<score[x]){
-   //갱신 횟수를 카운트하지 않으면.. 처음인지, 두번이상인지 알 수없어서 +1을 안하게 될 수도 있다.
-   //그리고 이렇게 안에서만 갱신하면, 이게 진짜 2번이상나와서 그 횟수에서 +1된건지,
-    //가장큰 값 한번 만나서 된 값인지 알수없다. 따라서 안에서 가장큰값 갱신하고,기록해놓고,
-    //fix된 값일 때, 마지막으로 이 값이 두번 갱신된거였는지 체크해서 업데이트하는게 맞다.
-                    score[y]=score[x];
-                }else if(score[y]==score[x]){
-                    score[y]+=1;
-                }
                 if(incnt[y]==0){
                    q.add(y);
                 }
+                if(score[y]<score[x]) { //이번 노드가 전 노드보다 횟수가 작으면
+                    score[y]=score[x]; //횟수 갱신
+                    maxcnt[y]=1; //max값 갱신 한번했다고 표시.
+                }else if(score[y]==score[x]) maxcnt[y]++; //이미 전노드와 이번노드가 같다면, 갱신횟수누적
             }
         }
-        System.out.println(k+" "+score[m]);
+        System.out.println(k+" "+score[m]); //해당 테케 번호와 목표값의 순서 출력
     }
 }
