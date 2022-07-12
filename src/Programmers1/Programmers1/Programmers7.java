@@ -1,3 +1,4 @@
+package Programmers1;
 /*
 1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요.
 
@@ -11,7 +12,7 @@ n	result
 10	4  > 2,3,5,7
 5	3  > 2,3,5
  */
-class Solution {
+class Programmers7 {
     public int solution(int n) { //n=5
         int answer = 0;
         for(int i=1;i<n;i++){ //3바퀴돈다.
