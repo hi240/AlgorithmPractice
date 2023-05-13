@@ -10,7 +10,6 @@ public class D2Practice {
         hash.add(2);
         hash.add(3);
         hash.add(1);
-        hash.add(4);
         
         for(Integer i : hash){
         	System.out.print(i);
