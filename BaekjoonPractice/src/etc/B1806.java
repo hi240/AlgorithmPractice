@@ -1,24 +1,29 @@
 package etc;
-
 import java.util.Scanner;
-//부분합
+
 public class B1806 {
 	public static void main(String args[]) throws Exception{
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		int s = sc.nextInt();
-		int[] num = new int[n+1];
+		int n = sc.nextInt(); //배열의길이
+		int s = sc.nextInt(); //총합
+		int[] num = new int[n];
 		for(int i=0;i<n;i++) {
 			num[i]= sc.nextInt();
 		}
-		int l=0;
 		int r=0;
-		boolean chk = true;
-		while(chk) {
-			for(int i=l;i<num.length-r;i++) {
-				if(num[i]
+		int sum=0;
+		int ans=Integer.MAX_VALUE;
+		for(int l=0;l<n;l++) {
+			while(r<n&&sum<s) {
+				sum += num[r];
+				r++;
 			}
-			r++;
+			if(sum>=s) {
+				ans = Math.min(ans, r-l);
+			}
+			sum -= num[l];
 		}
+		if(ans==Integer.MAX_VALUE) System.out.println("0");
+		else System.out.println(ans);
 	}
 }
